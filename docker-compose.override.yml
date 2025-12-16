@@ -1,0 +1,12 @@
+services:
+  cinema-php:
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+  cinema-nginx:
+    ports:
+      - "127.0.0.79:80:80"
+
+  cinema-db:
+    ports:
+      - "127.0.0.79:3306:3306"
