@@ -367,3 +367,33 @@ docker compose exec -it cinema-php php bin/console doctrine:fixtures:load --no-i
     ]
 }
 ```
+
+13. docker compose exec cinema-db mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS cinema_db_test_test;"
+14. docker compose exec cinema-db mysql -u root -p -e "GRANT ALL PRIVILEGES ON \`cinema_db_test_test\`.* TO 'cinema'@'%'; FLUSH PRIVILEGES;"
+15. docker compose exec -it cinema-php php bin/console doctrine:schema:update --force --env=test
+16. docker compose exec -it cinema-php vendor/bin/phpunit tests/Modules/Room/Api/Controller/DeleteRoomApiTest.php
+```
+PHPUnit 12.5.4 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.4.15
+Configuration: /var/www/html/phpunit.dist.xml
+
+..                                                                  2 / 2 (100%)
+
+Time: 00:00.052, Memory: 32.50 MB
+
+OK (2 tests, 4 assertions)
+```
+17. docker compose exec -it cinema-php vendor/bin/phpunit tests/Modules/Room/Domain/Entity/RoomTest.php
+```
+PHPUnit 12.5.4 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.4.15
+Configuration: /var/www/html/phpunit.dist.xml
+
+..                                                                  2 / 2 (100%)
+
+Time: 00:00.001, Memory: 14.00 MB
+
+OK (2 tests, 2 assertions)
+```
