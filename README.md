@@ -105,3 +105,21 @@ Example Response:
     }
 }
 ```
+
+11. Generowanie fixtur
+```
+docker compose exec -it cinema-php php bin/console doctrine:fixtures:load --no-interaction
+```
+
+12. Test update POST reservations -> /api/reservations
+```
+{
+    "screeningId": "019b3c4c-d61c-7c21-8260-2eae977f237c",
+    "customerEmail": "test@o2.pl",
+    "seats": [
+        {
+            "id": "019b3c4c-d61c-7c21-8260-2eae85756021"
+        }
+    ]
+}
+```

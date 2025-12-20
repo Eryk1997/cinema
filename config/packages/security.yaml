@@ -17,6 +17,10 @@ security:
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
+        public_api:
+            pattern: ^/api/(reservations|rooms)
+            security: false
+
         api:
             pattern: ^/api
             stateless: true
@@ -33,6 +37,7 @@ security:
     access_control:
         - { path: ^/api/admin/rooms, roles: ROLE_ADMIN }
         - { path: ^/api/rooms, roles: PUBLIC_ACCESS }
+        - { path: ^/api/reservations, roles: PUBLIC_ACCESS }
 
 when@test:
     security:

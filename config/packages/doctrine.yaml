@@ -34,6 +34,18 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Modules/User'
                 prefix: 'App\Modules\User'
                 alias: User
+            ReservationModule:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Modules/Reservation'
+                prefix: 'App\Modules\Reservation'
+                alias: Reservation
+            ScreeningModule:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Modules/Screening'
+                prefix: 'App\Modules\Screening'
+                alias: Screening
         controller_resolver:
             auto_mapping: false
 
