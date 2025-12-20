@@ -19,16 +19,17 @@ use Doctrine\ORM\Mapping as ORM;
 #[HasLifecycleCallbacks]
 class Seat
 {
+    #[ORM\ManyToOne(targetEntity: Room::class, inversedBy: 'seats')]
+    private Room $room;
+
     public function __construct(
         #[Id]
         #[ORM\Column(type: 'uuid_mariadb', unique: true)]
         private Uuid $id,
-        #[ORM\Embedded(class: Row::class, columnPrefix: false)]
-        private Row  $row,
-        #[ORM\Embedded(class: Column::class, columnPrefix: false)]
-        private Column  $column,
-        #[ORM\ManyToOne(targetEntity: Room::class, inversedBy: 'seats')]
-        private Room $room,
+        #[ORM\Embedded(class: Row::class, columnPrefix: 'seat_row_')]
+        private Row $row,
+        #[ORM\Embedded(class: Column::class, columnPrefix: 'seat_column_')]
+        private Column $column,
     )
     {
     }
@@ -51,5 +52,20 @@ class Seat
     public function getRoom(): Room
     {
         return $this->room;
+    }
+
+    public function setRoom(Room $room): void
+    {
+        $this->room = $room;
+    }
+
+    public function setRow(Row $row): void
+    {
+        $this->row = $row;
+    }
+
+    public function setColumn(Column $column): void
+    {
+        $this->column = $column;
     }
 }

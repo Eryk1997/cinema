@@ -10,19 +10,19 @@ use Doctrine\ORM\Mapping\Column as OrmColumn;
 #[Embeddable]
 class Column
 {
-    private const MAX_LENGTH = 40;
+    private const int MAX_LENGTH = 40;
 
     public function __construct(
         #[OrmColumn(type: Types::INTEGER, length: self::MAX_LENGTH)]
-        private int $column,
+        private int $number,
     ) {
-        if ($this->column > self::MAX_LENGTH) {
+        if ($this->number > self::MAX_LENGTH) {
             throw new RoomException('room.column.max_length', ['%max%' => self::MAX_LENGTH]);
         }
     }
 
-    public function getColumn(): string
+    public function getNumber(): int
     {
-        return $this->column;
+        return $this->number;
     }
 }

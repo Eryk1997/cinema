@@ -10,19 +10,19 @@ use Doctrine\ORM\Mapping\Embeddable;
 #[Embeddable]
 class Row
 {
-    private const MAX_LENGTH = 20;
+    private const int MAX_LENGTH = 20;
 
     public function __construct(
         #[Column(type: Types::INTEGER, length: self::MAX_LENGTH)]
-        private int $row,
+        private int $number,
     ) {
-        if ($this->row > self::MAX_LENGTH) {
+        if ($this->number > self::MAX_LENGTH) {
             throw new RoomException('room.row.max_length', ['%max%' => self::MAX_LENGTH]);
         }
     }
 
-    public function getRow(): string
+    public function getNumber(): int
     {
-        return $this->row;
+        return $this->number;
     }
 }
