@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Shared\Infrastructure\Doctrine\Type;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Platforms\MariaDBPlatform;
 use Doctrine\DBAL\Types\Type;
 use Symfony\Component\Uid\Uuid;
 

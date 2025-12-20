@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\User\Api\Controller;
 
 use App\Modules\User\Api\Model\Login\LoginRequestModel;

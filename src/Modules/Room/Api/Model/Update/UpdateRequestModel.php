@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Modules\Room\Api\Model\Update;
+declare(strict_types=1);
 
+namespace App\Modules\Room\Api\Model\Update;
 
 use App\Modules\Room\Application\Messenger\Command\UpdateRoomCommand\UpdateRoomCommand;
 use App\Modules\Room\Domain\ValueObject\RoomId;
@@ -14,8 +15,7 @@ final readonly class UpdateRequestModel
         #[NotBlank]
         public string $name,
         public array $seats,
-    )
-    {
+    ) {
     }
 
     public function toUpdateRoomCommand(string $id): UpdateRoomCommand

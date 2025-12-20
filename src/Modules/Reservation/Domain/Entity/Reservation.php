@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Reservation\Domain\Entity;
 
 use App\Modules\Room\Seat\Domain\Entity\Seat;
 use App\Modules\Screening\Domain\Entity\Screening;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
@@ -14,8 +18,6 @@ use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
 use Symfony\Component\Uid\Uuid;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 #[Entity]
 #[Table(name: 'reservations')]
@@ -38,8 +40,7 @@ class Reservation
         #[ManyToOne(targetEntity: Screening::class)]
         #[JoinColumn(nullable: false)]
         private Screening $screening,
-    )
-    {
+    ) {
         $this->seats = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
     }
@@ -67,7 +68,7 @@ class Reservation
     public function addSeat(Seat $seat): void
     {
         if ($seat->getRoom()->getId() !== $this->screening->getRoom()->getId()) {
-            throw new \DomainException("Seat does not belong to the screening room.");
+            throw new \DomainException('Seat does not belong to the screening room.');
         }
 
         if (!$this->seats->contains($seat)) {

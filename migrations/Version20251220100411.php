@@ -30,12 +30,12 @@ final class Version20251220100411 extends AbstractMigration
             'INSERT INTO users (id, fist_name, last_name, email, password, type)
              VALUES (:id, :firstName, :lastName, :email, :password, :type)',
             [
-                'id'        => $id,
+                'id' => $id,
                 'firstName' => 'Eryk',
-                'lastName'  => 'Janocha',
-                'email'     => 'eryk.janocha@gmail.com',
-                'password'  => $hashedPassword,
-                'type'      => 'AMIN',
+                'lastName' => 'Janocha',
+                'email' => 'eryk.janocha@gmail.com',
+                'password' => $hashedPassword,
+                'type' => 'AMIN',
             ]
         );
     }

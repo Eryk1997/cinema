@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Screening\Domain\Entity;
 
 use App\Modules\Room\Domain\Entity\Room;
@@ -27,8 +29,7 @@ class Screening
         #[ManyToOne(targetEntity: Room::class)]
         #[JoinColumn(nullable: false)]
         private Room $room,
-    )
-    {
+    ) {
     }
 
     public function getId(): Uuid

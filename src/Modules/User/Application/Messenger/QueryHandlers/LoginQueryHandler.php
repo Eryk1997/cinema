@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\User\Application\Messenger\QueryHandlers;
 
 use App\Modules\User\Application\Exception\UserInvalidCredential;
@@ -15,8 +17,7 @@ readonly class LoginQueryHandler
         private UserProvider $userProvider,
         private UserPasswordHasherInterface $passwordHasher,
         private JWTTokenManagerInterface $jwtManager,
-    )
-    {
+    ) {
     }
 
     public function __invoke(LoginQuery $query): LoginQueryResult

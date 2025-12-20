@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\User\Domain\Entity;
 
 use App\Modules\User\Domain\Enums\Type;

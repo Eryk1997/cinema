@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Reservation\Api\Model\Create;
 
 use App\Modules\Reservation\Application\Messenger\Command\CreateReservationCommand;
@@ -17,8 +19,7 @@ final readonly class CreateRequestModel
         #[Email]
         public string $customerEmail,
         public array $seats,
-    )
-    {
+    ) {
     }
 
     public function toCreateReservationCommand(): CreateReservationCommand

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Api\Model\Create;
 
 use App\Modules\Room\Application\Messenger\Command\CreateRoom\CreateRoomCommand;
@@ -12,9 +14,8 @@ final readonly class CreateRequestModel
     public function __construct(
         #[NotBlank]
         public string $name,
-        public array  $seats,
-    )
-    {
+        public array $seats,
+    ) {
     }
 
     public function toCreateRoomCommand(): CreateRoomCommand

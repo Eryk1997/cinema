@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Shared\Api\Controller;
 
 use App\Shared\Api\Model\PaginationModel;

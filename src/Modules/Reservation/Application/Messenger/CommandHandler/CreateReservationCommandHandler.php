@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Reservation\Application\Messenger\CommandHandler;
 
 use App\Modules\Reservation\Application\Exception\ReservationException;
@@ -15,13 +17,12 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 readonly class CreateReservationCommandHandler
 {
     public function __construct(
-        private ScreeningProvider                   $screeningProvider,
+        private ScreeningProvider $screeningProvider,
         private ReservationQueryRepositoryInterface $reservationQueryRepository,
-        private CreateReservationFactory            $createReservationFactory,
-        private ReservationRepositoryInterface      $reservationRepository,
+        private CreateReservationFactory $createReservationFactory,
+        private ReservationRepositoryInterface $reservationRepository,
         private SeatProvider $seatProvider,
-    )
-    {
+    ) {
     }
 
     public function __invoke(CreateReservationCommand $command): void
@@ -44,7 +45,7 @@ readonly class CreateReservationCommandHandler
 
         $room = $screening->getRoom();
 
-        $seatIds = array_map(fn($s) => $s->id, $command->seats);
+        $seatIds = array_map(fn ($s) => $s->id, $command->seats);
 
         foreach ($seatIds as $seatId) {
             $seat = $this->seatProvider->findById($seatId);

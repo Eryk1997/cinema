@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Application\Messenger\Command\UpdateRoomCommand;
 
 use App\Modules\Room\Domain\ValueObject\RoomId;
@@ -12,7 +14,6 @@ class UpdateRoomCommand implements Command
         public RoomId $roomId,
         public string $name,
         public array $seats,
-    )
-    {
+    ) {
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Seat\Infrastructure\Repositories;
 
 use App\Modules\Room\Seat\Domain\Entity\Seat;
 use App\Modules\Room\Seat\Domain\Repositories\SeatQueryRepositoryInterface;
-use App\Modules\Screening\Domain\Entity\Screening;
-use App\Modules\Screening\Domain\Repositories\ScreeningQueryRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

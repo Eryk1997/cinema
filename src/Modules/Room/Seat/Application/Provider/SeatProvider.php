@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Seat\Application\Provider;
 
 use App\Modules\Room\Seat\Application\Exception\SeatException;
@@ -10,8 +12,7 @@ final readonly class SeatProvider
 {
     public function __construct(
         private SeatQueryRepositoryInterface $seatQueryRepository,
-    )
-    {
+    ) {
     }
 
     public function findById(string $id): Seat

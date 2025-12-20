@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Seat\Application\Factory;
 
 use App\Modules\Room\Application\Messenger\Command\CreateRoom\CreateRoomSeatCommand;
@@ -13,7 +15,7 @@ class CreateSeatFactory
     {
         return new Seat(
             id: $command->seatId->toUuid(),
-            row: new Row($command->row) ,
+            row: new Row($command->row),
             column: new Column($command->column),
         );
     }

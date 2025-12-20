@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Modules\Reservation\Domain\Repositories;
+declare(strict_types=1);
 
-use App\Modules\Room\Domain\Entity\Room;
-use App\Modules\Room\Domain\ValueObject\Query\ListScreeningQueryVO;
-use Doctrine\ORM\Tools\Pagination\Paginator;
+namespace App\Modules\Reservation\Domain\Repositories;
 
 interface ReservationQueryRepositoryInterface
 {

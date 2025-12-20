@@ -1,14 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Infrastructure\Repositories;
 
 use App\Modules\Room\Domain\Entity\Room;
 use App\Modules\Room\Domain\Repositories\RoomQueryRepositoryInterface;
-use App\Modules\Room\Domain\Repositories\RoomRepositoryInterface;
-use App\Modules\Room\Domain\ValueObject\Query\ListScreeningQueryVO;
-use App\Shared\Infrastructure\Doctrine\Paginator\PaginatorFactory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**

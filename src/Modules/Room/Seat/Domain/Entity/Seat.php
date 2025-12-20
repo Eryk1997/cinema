@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Seat\Domain\Entity;
 
 use App\Modules\Room\Domain\Entity\Room;
 use App\Modules\Room\Seat\Domain\Embeddable\Column;
 use App\Modules\Room\Seat\Domain\Embeddable\Row;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Embedded;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
@@ -12,26 +15,24 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
 use Symfony\Component\Uid\Uuid;
-use Doctrine\ORM\Mapping as ORM;
 
 #[Entity]
 #[Table(name: 'seats')]
 #[HasLifecycleCallbacks]
 class Seat
 {
-    #[ORM\ManyToOne(targetEntity: Room::class, inversedBy: 'seats')]
+    #[ManyToOne(targetEntity: Room::class, inversedBy: 'seats')]
     private Room $room;
 
     public function __construct(
         #[Id]
         #[ORM\Column(type: 'uuid_mariadb', unique: true)]
         private Uuid $id,
-        #[ORM\Embedded(class: Row::class, columnPrefix: 'seat_row_')]
+        #[Embedded(class: Row::class, columnPrefix: 'seat_row_')]
         private Row $row,
-        #[ORM\Embedded(class: Column::class, columnPrefix: 'seat_column_')]
+        #[Embedded(class: Column::class, columnPrefix: 'seat_column_')]
         private Column $column,
-    )
-    {
+    ) {
     }
 
     public function getId(): Uuid

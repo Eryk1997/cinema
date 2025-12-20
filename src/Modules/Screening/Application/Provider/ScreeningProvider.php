@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Screening\Application\Provider;
 
 use App\Modules\Screening\Application\Exception\NotFoundScreeningException;
@@ -10,8 +12,7 @@ final readonly class ScreeningProvider
 {
     public function __construct(
         private ScreeningQueryRepositoryInterface $queryRepository,
-    )
-    {
+    ) {
     }
 
     public function findById(string $id): Screening

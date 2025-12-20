@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Domain\Entity;
 
 use App\Modules\Room\Domain\Embeddable\Name;
@@ -30,8 +32,7 @@ class Room
         private Uuid $id,
         #[Embedded(class: Name::class, columnPrefix: false)]
         private Name $name,
-    )
-    {
+    ) {
         $this->seats = new ArrayCollection();
     }
 
@@ -53,7 +54,7 @@ class Room
 
     public function addSeat(Seat $seat): void
     {
-        if (!$this->seats->contains($seat)){
+        if (!$this->seats->contains($seat)) {
             $this->seats->add($seat);
             $seat->setRoom($this);
         }
@@ -61,10 +62,10 @@ class Room
 
     public function existEqualSeat(Seat $seat): bool
     {
-        return $this->seats->exists(fn($key, Seat $currentSeat) =>
-            $currentSeat->getRow()->getNumber() === $seat->getRow()->getNumber() &&
-            $currentSeat->getColumn()->getNumber() === $seat->getColumn()->getNumber() &&
-            $currentSeat->getId() !== $seat->getId()
+        return $this->seats->exists(
+            fn ($key, Seat $currentSeat) => $currentSeat->getRow()->getNumber() === $seat->getRow()->getNumber()
+            && $currentSeat->getColumn()->getNumber() === $seat->getColumn()->getNumber()
+            && $currentSeat->getId() !== $seat->getId()
         );
     }
 

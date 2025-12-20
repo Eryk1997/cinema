@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Reservation\Infrastructure\Repositories;
 
 use App\Modules\Reservation\Domain\Entity\Reservation;

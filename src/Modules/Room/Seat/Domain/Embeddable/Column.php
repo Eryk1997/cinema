@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Seat\Domain\Embeddable;
 
 use App\Modules\Room\Domain\Exception\RoomException;
 use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping\Embeddable;
 use Doctrine\ORM\Mapping\Column as OrmColumn;
+use Doctrine\ORM\Mapping\Embeddable;
 
 #[Embeddable]
 class Column

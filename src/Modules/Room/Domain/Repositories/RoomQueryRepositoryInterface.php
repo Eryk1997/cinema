@@ -1,10 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Domain\Repositories;
 
 use App\Modules\Room\Domain\Entity\Room;
-use App\Modules\Room\Domain\ValueObject\Query\ListScreeningQueryVO;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 
 interface RoomQueryRepositoryInterface
 {

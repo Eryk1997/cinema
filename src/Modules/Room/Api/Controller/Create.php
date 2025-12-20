@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Api\Controller;
 
 use App\Modules\Room\Api\Model\Create\CreateRequestModel;
@@ -21,14 +23,13 @@ class Create extends AbstractApiController
         #[MapRequestPayload]
         CreateRequestModel $model,
         CommandBus $bus,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         try {
             $command = $model->toCreateRoomCommand();
 
             $bus->dispatch($command);
 
-        return $this->successData($command->roomId);
+            return $this->successData($command->roomId);
         } catch (HandlerFailedException $exception) {
             return $this->successKnownIssueMessage($exception);
         }
