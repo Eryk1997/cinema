@@ -2,7 +2,7 @@
 
 namespace App\Modules\Room\Domain\ValueObject\Query;
 
-final readonly class ListRoomQueryVO
+final readonly class ListScreeningQueryVO
 {
     public function __construct(
         public int $currentPage,

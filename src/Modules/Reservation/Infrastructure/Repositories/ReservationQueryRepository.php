@@ -7,6 +7,7 @@ use App\Modules\Reservation\Domain\Repositories\ReservationQueryRepositoryInterf
 use App\Modules\Room\Domain\Entity\Room;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @extends ServiceEntityRepository<Reservation>
@@ -28,5 +29,21 @@ class ReservationQueryRepository extends ServiceEntityRepository implements Rese
             ->setParameter('seatId', $seatId);
 
         return count($qb->getQuery()->getResult()) > 0;
+    }
+
+    /** @return string[] */
+    public function findReservedSeatIdsForScreening(string $screeningId): array
+    {
+        $result = $this->createQueryBuilder('r')
+            ->select('s.id')
+            ->innerJoin('r.seats', 's')
+            ->where('r.screening = :screeningId')
+            ->setParameter('screeningId', $screeningId, 'uuid_mariadb')
+            ->getQuery()
+            ->getScalarResult();
+
+        return array_map(function ($item) {
+            return Uuid::fromString($item['id'])->toRfc4122();
+        }, $result);
     }
 }

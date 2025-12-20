@@ -77,21 +77,265 @@ Example Response:
 }
 ```
 
-10. Test update GET room -> /api/rooms?currentPage=1&pageSize=50
+10. Test update GET screenings -> /api/screenings?currentPage=1&pageSize=50
 ```
 {
     "response": true,
     "data": [
         {
-            "name": "test",
+            "movieTitle": "Gladiator 2",
+            "roomName": "Sala Premierowa",
+            "startTime": "2025-12-25 20:00:00",
             "seats": [
                 {
-                    "row": 2,
-                    "column": 1
+                    "row": 1,
+                    "column": 1,
+                    "isAvailable": true
                 },
                 {
                     "row": 1,
-                    "column": 5
+                    "column": 2,
+                    "isAvailable": true
+                },
+                {
+                    "row": 1,
+                    "column": 3,
+                    "isAvailable": true
+                },
+                {
+                    "row": 1,
+                    "column": 4,
+                    "isAvailable": true
+                },
+                {
+                    "row": 1,
+                    "column": 5,
+                    "isAvailable": true
+                },
+                {
+                    "row": 1,
+                    "column": 6,
+                    "isAvailable": true
+                },
+                {
+                    "row": 1,
+                    "column": 7,
+                    "isAvailable": true
+                },
+                {
+                    "row": 1,
+                    "column": 8,
+                    "isAvailable": true
+                },
+                {
+                    "row": 1,
+                    "column": 9,
+                    "isAvailable": true
+                },
+                {
+                    "row": 1,
+                    "column": 10,
+                    "isAvailable": true
+                },
+                {
+                    "row": 2,
+                    "column": 1,
+                    "isAvailable": true
+                },
+                {
+                    "row": 2,
+                    "column": 2,
+                    "isAvailable": true
+                },
+                {
+                    "row": 2,
+                    "column": 3,
+                    "isAvailable": true
+                },
+                {
+                    "row": 2,
+                    "column": 4,
+                    "isAvailable": true
+                },
+                {
+                    "row": 2,
+                    "column": 5,
+                    "isAvailable": true
+                },
+                {
+                    "row": 2,
+                    "column": 6,
+                    "isAvailable": true
+                },
+                {
+                    "row": 2,
+                    "column": 7,
+                    "isAvailable": false
+                },
+                {
+                    "row": 2,
+                    "column": 8,
+                    "isAvailable": true
+                },
+                {
+                    "row": 2,
+                    "column": 9,
+                    "isAvailable": true
+                },
+                {
+                    "row": 2,
+                    "column": 10,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 1,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 2,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 3,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 4,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 5,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 6,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 7,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 8,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 9,
+                    "isAvailable": true
+                },
+                {
+                    "row": 3,
+                    "column": 10,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 1,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 2,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 3,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 4,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 5,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 6,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 7,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 8,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 9,
+                    "isAvailable": true
+                },
+                {
+                    "row": 4,
+                    "column": 10,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 1,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 2,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 3,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 4,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 5,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 6,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 7,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 8,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 9,
+                    "isAvailable": true
+                },
+                {
+                    "row": 5,
+                    "column": 10,
+                    "isAvailable": true
                 }
             ]
         }
