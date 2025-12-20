@@ -28,7 +28,7 @@ final readonly class UpdateRequestModel
 
         return new UpdateRoomCommand(
             roomId: RoomId::fromString($id),
-            name: $id,
+            name: $this->name,
             seats: $seats,
         );
     }

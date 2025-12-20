@@ -5,7 +5,10 @@ namespace App\Modules\Room\Infrastructure\Repositories;
 use App\Modules\Room\Domain\Entity\Room;
 use App\Modules\Room\Domain\Repositories\RoomQueryRepositoryInterface;
 use App\Modules\Room\Domain\Repositories\RoomRepositoryInterface;
+use App\Modules\Room\Domain\ValueObject\Query\ListRoomQueryVO;
+use App\Shared\Infrastructure\Doctrine\Paginator\PaginatorFactory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -26,5 +29,13 @@ class RoomQueryRepository extends ServiceEntityRepository implements RoomQueryRe
     public function findOneById(string $id): ?Room
     {
         return $this->find($id);
+    }
+
+    /** @return Paginator<Room> */
+    public function findByListRoomQuery(ListRoomQueryVO $query): Paginator
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        return PaginatorFactory::createScalarFromQuery($qb->getQuery(), $query->currentPage, $query->pageSize);
     }
 }

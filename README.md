@@ -53,3 +53,55 @@ Example Response:
 }
 ```
 
+8. Test remove DELETE room -> /api/rooms/{id}
+
+9. Test update PATCH room -> /api/rooms/{id}
+```
+{
+    "name": "test",
+    "seats": [
+        {
+            "id": "019b3bd9-39a7-7201-9cfd-e36c393f3f46",
+            "row": 1,
+            "column": 1
+        },
+        {
+            "row": 1,
+            "column": 2
+        },
+        {
+            "row": 1,
+            "column": 3
+        }
+    ]
+}
+```
+
+10. Test update GET room -> /api/rooms?currentPage=1&pageSize=50
+```
+{
+    "response": true,
+    "data": [
+        {
+            "name": "test",
+            "seats": [
+                {
+                    "row": 2,
+                    "column": 1
+                },
+                {
+                    "row": 1,
+                    "column": 5
+                }
+            ]
+        }
+    ],
+    "pagination": {
+        "previousPage": null,
+        "nextPage": null,
+        "pageSize": 50,
+        "totalCount": 1,
+        "currentPage": 1
+    }
+}
+```
