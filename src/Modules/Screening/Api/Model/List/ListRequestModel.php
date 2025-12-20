@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Room\Api\Model\List;
+namespace App\Modules\Screening\Api\Model\List;
 
-use App\Modules\Room\Application\Messenger\Queries\ListRoomQuery;
+use App\Modules\Screening\Application\Messenger\Queries\ListScreeningQuery;
 
 readonly class ListRequestModel
 {
@@ -13,9 +13,9 @@ readonly class ListRequestModel
     {
     }
 
-    public function toListRoomQuery(): ListRoomQuery
+    public function toListRoomQuery(): ListScreeningQuery
     {
-        return new ListRoomQuery(
+        return new ListScreeningQuery(
             currentPage: $this->currentPage,
             pageSize: $this->pageSize,
         );

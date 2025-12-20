@@ -3,8 +3,6 @@
 namespace App\Modules\Room\Api\Controller;
 
 use App\Modules\Room\Api\Model\Create\CreateRequestModel;
-use App\Modules\Room\Domain\Entity\Room;
-use App\Modules\Room\Domain\ValueObject\RoomId;
 use App\Shared\Api\Controller\AbstractApiController;
 use App\Shared\Infrastructure\Messenger\CommandBus\CommandBus;
 use Symfony\Component\HttpFoundation\JsonResponse;
