@@ -20,18 +20,12 @@ final class Version20251220095001 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE rooms (id CHAR(36) NOT NULL, value VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_7CA11A961D775834 (value), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
-        $this->addSql('CREATE TABLE seats (id CHAR(36) NOT NULL, row INT NOT NULL, `column` INT NOT NULL, room_id CHAR(36) DEFAULT NULL, INDEX IDX_BFE2575054177093 (room_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
         $this->addSql('CREATE TABLE users (password VARCHAR(255) NOT NULL, id CHAR(36) NOT NULL, fist_name VARCHAR(255) NOT NULL, last_name VARCHAR(255) NOT NULL, email VARCHAR(180) NOT NULL, type VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_1483A5E9E7927C74 (email), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
-        $this->addSql('ALTER TABLE seats ADD CONSTRAINT FK_BFE2575054177093 FOREIGN KEY (room_id) REFERENCES rooms (id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE seats DROP FOREIGN KEY FK_BFE2575054177093');
-        $this->addSql('DROP TABLE rooms');
-        $this->addSql('DROP TABLE seats');
         $this->addSql('DROP TABLE users');
     }
 }

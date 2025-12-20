@@ -3,3 +3,8 @@ user:
     invalid_credentials: 'Nieprawidłowe dane uwierzytelniające'
     history:
         access_failed: 'Brak uprawnień'
+
+room:
+    already_exists: 'Pokój z podaną nazwą istnieje'
+    seat:
+        duplicate: 'Nie może być takie samo miejsce'

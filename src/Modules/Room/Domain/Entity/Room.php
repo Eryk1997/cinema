@@ -50,4 +50,20 @@ class Room
     {
         return $this->seats;
     }
+
+    public function addSeat(Seat $seat): void
+    {
+        if (!$this->seats->contains($seat)){
+            $this->seats->add($seat);
+            $seat->setRoom($this);
+        }
+    }
+
+    public function existEqualSeat(Seat $seat): bool
+    {
+        return $this->seats->exists(fn($key, Seat $currentSeat) =>
+            $currentSeat->getRow()->getNumber() === $seat->getRow()->getNumber() &&
+            $currentSeat->getColumn()->getNumber() === $seat->getColumn()->getNumber()
+        );
+    }
 }
