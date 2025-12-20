@@ -58,4 +58,14 @@ class Seat
     {
         $this->room = $room;
     }
+
+    public function setRow(Row $row): void
+    {
+        $this->row = $row;
+    }
+
+    public function setColumn(Column $column): void
+    {
+        $this->column = $column;
+    }
 }

@@ -63,7 +63,20 @@ class Room
     {
         return $this->seats->exists(fn($key, Seat $currentSeat) =>
             $currentSeat->getRow()->getNumber() === $seat->getRow()->getNumber() &&
-            $currentSeat->getColumn()->getNumber() === $seat->getColumn()->getNumber()
+            $currentSeat->getColumn()->getNumber() === $seat->getColumn()->getNumber() &&
+            $currentSeat->getId() !== $seat->getId()
         );
+    }
+
+    public function setName(Name $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function removeSeat(Seat $seat): void
+    {
+        if ($this->seats->contains($seat)) {
+            $this->seats->removeElement($seat);
+        }
     }
 }
