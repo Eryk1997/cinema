@@ -22,4 +22,10 @@ class RoomRepository extends ServiceEntityRepository implements RoomRepositoryIn
         $this->getEntityManager()->persist($room);
         $this->getEntityManager()->flush();
     }
+
+    public function remove(Room $room): void
+    {
+        $this->getEntityManager()->remove($room);
+        $this->getEntityManager()->flush();
+    }
 }

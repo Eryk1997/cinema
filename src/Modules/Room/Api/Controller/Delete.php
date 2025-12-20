@@ -2,9 +2,7 @@
 
 namespace App\Modules\Room\Api\Controller;
 
-use App\Modules\Room\Api\Model\Create\CreateRequestModel;
-use App\Modules\Room\Domain\Entity\Room;
-use App\Modules\Room\Domain\ValueObject\RoomId;
+use App\Modules\Room\Application\Messenger\Command\DeleteRoom\DeleteRoomCommand;
 use App\Shared\Api\Controller\AbstractApiController;
 use App\Shared\Infrastructure\Messenger\CommandBus\CommandBus;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,21 +14,18 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[AsController]
 #[IsGranted('ROLE_ADMIN')]
-#[Route('/rooms', name: 'api_rooms_create', methods: ['POST'])]
-class Create extends AbstractApiController
+#[Route('/rooms/{id}', name: 'api_rooms_delete', methods: ['DELETE'])]
+class Delete extends AbstractApiController
 {
     public function __invoke(
-        #[MapRequestPayload]
-        CreateRequestModel $model,
         CommandBus $bus,
+        string $id
     ): JsonResponse
     {
         try {
-            $command = $model->toCreateRoomCommand();
+            $bus->dispatch(new DeleteRoomCommand($id));
 
-            $bus->dispatch($command);
-
-        return $this->successData($command->roomId);
+            return $this->successData($id);
         } catch (HandlerFailedException $exception) {
             return $this->successKnownIssueMessage($exception);
         }

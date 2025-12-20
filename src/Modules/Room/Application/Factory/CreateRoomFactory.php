@@ -5,6 +5,7 @@ namespace App\Modules\Room\Application\Factory;
 use App\Modules\Room\Application\Exception\NotFoundRoomException;
 use App\Modules\Room\Application\Exception\RoomException;
 use App\Modules\Room\Application\Messenger\Command\CreateRoom\CreateRoomCommand;
+use App\Modules\Room\Application\Provider\RoomProvider;
 use App\Modules\Room\Domain\Embeddable\Name;
 use App\Modules\Room\Domain\Entity\Room;
 use App\Modules\Room\Seat\Application\Factory\CreateSeatFactory;

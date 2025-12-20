@@ -22,4 +22,9 @@ class RoomQueryRepository extends ServiceEntityRepository implements RoomQueryRe
     {
         return $this->findOneBy(['name.value' => $name]);
     }
+
+    public function findOneById(string $id): ?Room
+    {
+        return $this->find($id);
+    }
 }
