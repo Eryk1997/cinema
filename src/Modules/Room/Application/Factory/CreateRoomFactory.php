@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Application\Factory;
 
 use App\Modules\Room\Application\Exception\NotFoundRoomException;
@@ -15,8 +17,7 @@ readonly class CreateRoomFactory
     public function __construct(
         private CreateSeatFactory $createSeatFactory,
         private RoomProvider $roomProvider,
-    )
-    {
+    ) {
     }
 
     public function create(CreateRoomCommand $command): Room

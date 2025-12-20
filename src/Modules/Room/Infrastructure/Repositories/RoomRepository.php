@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Infrastructure\Repositories;
 
 use App\Modules\Room\Domain\Entity\Room;

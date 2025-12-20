@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Reservation\Api\Model\Create;
 
 use App\Modules\Reservation\Application\Messenger\Command\CreateReservationSeatCommand;
@@ -10,8 +12,7 @@ final readonly class CreateSeatRequestModel
     public function __construct(
         #[NotBlank]
         public string $id,
-    )
-    {
+    ) {
     }
 
     public function toCreateReservationSeatCommand(): CreateReservationSeatCommand

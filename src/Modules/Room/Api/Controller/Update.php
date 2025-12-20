@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Api\Controller;
 
 use App\Modules\Room\Api\Model\Update\UpdateRequestModel;
@@ -19,10 +21,9 @@ class Update extends AbstractApiController
     public function __invoke(
         #[MapRequestPayload]
         UpdateRequestModel $model,
-        CommandBus         $bus,
-        string             $id,
-    )
-    {
+        CommandBus $bus,
+        string $id,
+    ) {
         try {
             $command = $model->toUpdateRoomCommand($id);
 

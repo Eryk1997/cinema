@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Screening\Application\Messenger\QueryHandlers;
 
 use App\Modules\Reservation\Domain\Repositories\ReservationQueryRepositoryInterface;
-use App\Modules\Room\Domain\Repositories\RoomQueryRepositoryInterface;
 use App\Modules\Screening\Api\Model\List\ListResponseModel;
 use App\Modules\Screening\Application\Messenger\Queries\ListScreeningQuery;
 use App\Modules\Screening\Domain\Repositories\ScreeningQueryRepositoryInterface;
@@ -14,8 +15,7 @@ final readonly class ListRoomQueryHandler
     public function __construct(
         public ScreeningQueryRepositoryInterface $screeningQueryRepository,
         private ReservationQueryRepositoryInterface $reservationQueryRepository,
-    )
-    {
+    ) {
     }
 
     public function __invoke(ListScreeningQuery $query): PaginatorVO

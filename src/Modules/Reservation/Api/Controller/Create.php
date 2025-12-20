@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Reservation\Api\Controller;
 
 use App\Modules\Reservation\Api\Model\Create\CreateRequestModel;
@@ -18,9 +20,8 @@ class Create extends AbstractApiController
     public function __invoke(
         #[MapRequestPayload]
         CreateRequestModel $model,
-        CommandBus         $bus
-    ): JsonResponse
-    {
+        CommandBus $bus
+    ): JsonResponse {
         try {
             $command = $model->toCreateReservationCommand();
 

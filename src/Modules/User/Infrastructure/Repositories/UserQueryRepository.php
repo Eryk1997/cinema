@@ -1,6 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\User\Infrastructure\Repositories;
+
 use App\Modules\User\Domain\Entity\User;
 use App\Modules\User\Domain\Repositories\UserQueryRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

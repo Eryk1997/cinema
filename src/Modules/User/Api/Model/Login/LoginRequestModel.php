@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\User\Api\Model\Login;
 
 use Symfony\Component\Validator\Constraints\Email;

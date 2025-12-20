@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Dev\Fixtures;
 
 use App\Modules\Room\Domain\Embeddable\Name;
@@ -21,8 +23,8 @@ class AppFixtures extends Fixture
             new Name('Sala Premierowa')
         );
 
-        for ($r = 1; $r <= 5; $r++) {
-            for ($c = 1; $c <= 10; $c++) {
+        for ($r = 1; $r <= 5; ++$r) {
+            for ($c = 1; $c <= 10; ++$c) {
                 $seat = new Seat(
                     Uuid::v7(),
                     new Row($r),

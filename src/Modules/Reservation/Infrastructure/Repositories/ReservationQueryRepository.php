@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Reservation\Infrastructure\Repositories;
 
 use App\Modules\Reservation\Domain\Entity\Reservation;
 use App\Modules\Reservation\Domain\Repositories\ReservationQueryRepositoryInterface;
-use App\Modules\Room\Domain\Entity\Room;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Uid\Uuid;
@@ -26,7 +27,8 @@ class ReservationQueryRepository extends ServiceEntityRepository implements Rese
             ->where('r.screening = :screeningId')
             ->andWhere('s.id = :seatId')
             ->setParameter('screeningId', $screeningId)
-            ->setParameter('seatId', $seatId);
+            ->setParameter('seatId', $seatId)
+        ;
 
         return count($qb->getQuery()->getResult()) > 0;
     }
@@ -40,7 +42,8 @@ class ReservationQueryRepository extends ServiceEntityRepository implements Rese
             ->where('r.screening = :screeningId')
             ->setParameter('screeningId', $screeningId, 'uuid_mariadb')
             ->getQuery()
-            ->getScalarResult();
+            ->getScalarResult()
+        ;
 
         return array_map(function ($item) {
             return Uuid::fromString($item['id'])->toRfc4122();

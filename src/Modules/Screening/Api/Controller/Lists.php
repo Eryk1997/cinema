@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Screening\Api\Controller;
 
 use App\Modules\Screening\Api\Model\List\ListRequestModel;
@@ -20,8 +22,7 @@ class Lists extends AbstractApiController
         #[MapQueryString]
         ListRequestModel $model,
         ListRoomQueryHandler $handler,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         $vo = $handler($model->toListRoomQuery());
 
         return $this->successPaginatedData(

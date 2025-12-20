@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Room\Application\Messenger\CommandHandler;
 
 use App\Modules\Room\Application\Exception\RoomException;
@@ -22,8 +24,7 @@ readonly class UpdateRoomCommandHandler
         private RoomProvider $roomProvider,
         private RoomRepositoryInterface $repository,
         private CreateSeatFactory $createSeatFactory,
-    )
-    {
+    ) {
     }
 
     public function __invoke(UpdateRoomCommand $command): void

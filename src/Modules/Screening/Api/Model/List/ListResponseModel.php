@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Screening\Api\Model\List;
 
-use App\Modules\Room\Domain\Entity\Room;
 use App\Modules\Screening\Domain\Entity\Screening;
 use App\Shared\Application\ValueObject\PaginatorVO;
 
@@ -14,12 +15,12 @@ final readonly class ListResponseModel
         public string $roomName,
         public string $startTime,
         public array $seats,
-    )
-    {
+    ) {
     }
 
     /**
      * @param PaginatorVO<Screening> $paginatorVO
+     *
      * @return self[]
      */
     public static function fromPaginatorVO(PaginatorVO $paginatorVO): array
@@ -35,7 +36,7 @@ final readonly class ListResponseModel
             roomName: $screening->getRoom()->getName(),
             startTime: $screening->getStartTime()->format('Y-m-d H:i:s'),
             seats: array_map(
-                fn($seat) => ListSeatResponseModel::fromSeat(
+                fn ($seat) => ListSeatResponseModel::fromSeat(
                     $seat,
                     !in_array($seat->getId()->toRfc4122(), $reservedSeatIds, true)
                 ),

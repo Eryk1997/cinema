@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Reservation\Application\Messenger\Command;
 
 use App\Modules\Reservation\Domain\ValueObject\ReservationId;
@@ -13,7 +15,6 @@ class CreateReservationCommand implements Command
         public string $screeningId,
         public string $customerEmail,
         public array $seats,
-    )
-    {
+    ) {
     }
 }
