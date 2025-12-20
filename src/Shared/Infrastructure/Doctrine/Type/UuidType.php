@@ -3,6 +3,7 @@
 namespace App\Shared\Infrastructure\Doctrine\Type;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Platforms\MariaDBPlatform;
 use Doctrine\DBAL\Types\Type;
 use Symfony\Component\Uid\Uuid;
 
@@ -10,40 +11,55 @@ class UuidType extends Type
 {
     public const NAME = 'uuid_mariadb';
 
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
+    public function getName(): string
     {
-        return 'UUID';
+        return self::NAME;
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
+    public function getMappedDatabaseTypes(AbstractPlatform $platform): array
     {
-        if ($value === null || is_string($value)) {
-            return $value;
+        return ['char'];
+    }
+
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
+    {
+        return 'CHAR(36)';
+    }
+
+    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
+    {
+        if ($value === null) {
+            return null;
         }
 
         if ($value instanceof Uuid) {
+            // przechowujemy jako RFC4122 string (36 znaków)
             return $value->toRfc4122();
         }
 
-        throw new \InvalidArgumentException(sprintf('Expected Uuid or string, got %s', get_debug_type($value)));
+        if (is_string($value)) {
+            return $value;
+        }
+
+        throw new \InvalidArgumentException('Invalid UUID value.');
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): ?Uuid
+    public function convertToPHPValue(mixed $value, AbstractPlatform $platform): ?Uuid
     {
-        if ($value === null || $value instanceof Uuid) {
+        if ($value === null) {
+            return null;
+        }
+
+        if ($value instanceof Uuid) {
             return $value;
         }
 
         if (is_string($value)) {
+            // przyjmujemy RFC4122 string
             return Uuid::fromRfc4122($value);
         }
 
-        throw new \InvalidArgumentException(sprintf('Expected string or null, got %s', get_debug_type($value)));
-    }
-
-    public function getName(): string
-    {
-        return self::NAME;
+        throw new \InvalidArgumentException('Invalid UUID value.');
     }
 
     public function requiresSQLCommentHint(AbstractPlatform $platform): bool
